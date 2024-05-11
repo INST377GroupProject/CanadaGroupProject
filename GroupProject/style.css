@@ -1,0 +1,65 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #121212; /* Dark background for the body */
+    color: #e0e0e0; /* Light grey text for readability */
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #1f1f1f; /* Slightly lighter dark shade for the header */
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #9fa8da; /* Soft blue for links */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+nav ul li a:hover, nav ul li a:focus {
+    color: #d1c4e9; /* Lighter purple shade on hover */
+}
+
+footer {
+    background-color: #1f1f1f;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+main {
+    padding: 20px;
+    min-height: calc(100vh - 160px); /* Adjusting height to ensure footer sticks at bottom */
+}
+
+button {
+    background-color: #616161; /* Dark grey button */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #757575; /* Lighter grey on hover */
+}
