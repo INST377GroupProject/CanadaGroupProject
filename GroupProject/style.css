@@ -63,3 +63,44 @@ button {
 button:hover {
     background-color: #757575; /* Lighter grey on hover */
 }
+
+.container {
+    text-align: center;
+}
+
+h1.title {
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+.block1, .block2, .block3 {
+    display: inline-flex;
+    width: 50%;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.block1 {
+    color: green;
+    border: solid green;
+}
+
+.block2 {
+    color: orangered;
+    border: solid orangered;
+}
+
+.block3 {
+    color: red;
+    border: solid red;
+}
+
+.map {
+    height: 85%;
+    width: 85%;
+    margin-bottom: 80px;
+    filter: contrast(65%);
+    filter: brightness(95%);
+}
