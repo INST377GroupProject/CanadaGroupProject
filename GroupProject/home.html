@@ -1,40 +1,57 @@
 <html>
-<head>
+  <head>
     <title>Covid-19 Tracker Canada</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <header>
-        <h1>Welcome to the Covid-19 Tracker for Canada</h1>
-        <nav>
-            <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="tracker.html">Tracker</a></li>
-            </ul>
-        </nav>
+      <h1>Welcome to the Covid-19 Tracker for Canada</h1>
+      <nav>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="tracker.html">Tracker</a></li>
+        </ul>
+      </nav>
     </header>
     <main>
-        <p>This is the homepage for the Covid-19 Tracker. Stay informed about the latest Covid-19 statistics across Canada.</p>
-        <button onclick="toggleTheme()">Toggle Dark/Light Theme</button>
+      <p>
+        This is the homepage for the Covid-19 Tracker. Stay informed about the latest Covid-19
+        statistics across Canada.
+      </p>
+      <button onclick="toggleTheme()">Toggle Dark/Light Theme</button>
     </main>
     <div class="container">
-        <h1 class="title">Covid-19 Cases in Canada</h1>
-        <div class="block1">
-            <h2>The Good</h2>
+      <h1 class="title">Covid-19 Cases in Canada</h1>
+
+      <div class="block1">
+        <h2>The Good</h2>
+        <div class="stats">
+          <div id="casesAdmitted">Cases Admitted: <span id="admitted-value"></span></div>
+          <div id="recoveries">Recoveries: <span id="recoveries-value"></span></div>
         </div>
-        <div class="block2">
-            <h2>The Bad</h2>
+      </div>
+
+      <div class="block2">
+        <h2>The Bad</h2>
+        <div class="stats">
+          <div id="total-cases">Cases: <span id="cases-value"></span></div>
+          <div id="tests">Tests: <span id="tests-value"></span></div>
         </div>
-        <div class="block3">
-            <h2>The Ugly</h2>
+      </div>
+
+      <div class="block3">
+        <h2>The Ugly</h2>
+        <div class="stats">
+          <div id="total-hospitalizations">Cases: <span id="hospitalizations-value"></span></div>
+          <div id="deaths">Tests: <span id="deaths-value"></span></div>
         </div>
-        <img src="canada-map-removebg-preview.png" alt="Map of Canada" class="map">
+      </div>
+      <img src="canada-map-removebg-preview.png" alt="Map of Canada" class="map" />
     </div>
     <footer>
-        <p>Covid-19 Tracker Canada © 2024</p>
+      <p>Covid-19 Tracker Canada © 2024</p>
     </footer>
     <script src="group_proj.js"></script>
-</body>
+  </body>
 </html>
-

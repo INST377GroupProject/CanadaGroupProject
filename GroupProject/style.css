@@ -80,6 +80,8 @@ h1.title {
     padding: 20px;
     border-radius: 8px;
     background-color: #f9f9f9;
+    justify-content: center;
+    position: relative;
 }
 
 .block1 {
@@ -128,4 +130,13 @@ h1.title {
 #covid-stats p span {
     font-weight: bold;
     color: #bb86fc; /* Accent color for values */
+}
+
+.stats {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 0 10px; /* Adjust padding as needed */
 }
