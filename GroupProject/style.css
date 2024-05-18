@@ -104,3 +104,28 @@ h1.title {
     filter: contrast(65%);
     filter: brightness(95%);
 }
+
+#covid-stats {
+    margin-top: 20px;
+    background-color: #1f1f1f;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+#covid-stats h2 {
+    color: #9fa8da; /* Soft blue for headings */
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+#covid-stats p {
+    color: #e0e0e0; /* Light grey for text */
+    margin: 5px 0;
+    font-size: 18px;
+}
+
+#covid-stats p span {
+    font-weight: bold;
+    color: #bb86fc; /* Accent color for values */
+}
