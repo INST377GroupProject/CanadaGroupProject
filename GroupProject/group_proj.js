@@ -85,7 +85,6 @@ function fetchCovidData() {
 }
 
 // Update home page "Good", "Bad", and "Ugly" numbers
-// Update home page "Good", "Bad", and "Ugly" numbers
 function loadHomePageStats() {
   console.log("Fetching home page stats...");
   fetch("https://api.covid19tracker.ca/summary")
