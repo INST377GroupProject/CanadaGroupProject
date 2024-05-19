@@ -1,63 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Covid-19 Tracker Canada</title>
     <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="transition-screen">
-    <header>
+  </head>
+  <body>
+    <div class="transition-screen">
+      <header>
         <h1>Welcome to the Covid-19 Tracker for Canada</h1>
         <nav>
-            <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="tracker.html">Tracker</a></li>
-            </ul>
+          <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="tracker.html">Tracker</a></li>
+          </ul>
         </nav>
-    </header>
-    <main>
+      </header>
+      <main>
         <p>
-            This is the homepage for the Covid-19 Tracker. Stay informed about the latest Covid-19
-            statistics across Canada.
+          Stay informed with the latest COVID-19 statistics across Canada. Our user-friendly website
+          provides real-time updates on COVID-19 cases, fatalities, and regional data to keep
+          Canadians and health organizations informed. Explore statistics and understand the spread
+          and impact of the virus. Make informed decisions using up-to-date information. Together,
+          we can combat the spread of COVID-19.
         </p>
         <button onclick="toggleTheme()">Toggle Dark/Light Theme</button>
         <div class="container">
-            <h1 class="title">Covid-19 Cases in Canada</h1>
+          <h1 class="title">Covid-19 Cases in Canada</h1>
 
-            <div class="block1">
-                <h2>The Good</h2>
-                <div class="stats">
-                    <div id="casesAdmitted">Cases Admitted: <span id="admitted-value"></span></div>
-                    <div id="recoveries">Recoveries: <span id="recoveries-value"></span></div>
-                </div>
+          <div class="block1">
+            <h2>The Good</h2>
+            <div class="stats">
+              <div id="casesAdmitted">Cases Admitted: <span id="admitted-value"></span></div>
+              <div id="recoveries">Recoveries: <span id="recoveries-value"></span></div>
             </div>
+          </div>
 
-            <div class="block2">
-                <h2>The Bad</h2>
-                <div class="stats">
-                    <div id="total-cases">Cases: <span id="cases-value"></span></div>
-                    <div id="tests">Tests: <span id="tests-value"></span></div>
-                </div>
+          <div class="block2">
+            <h2>The Bad</h2>
+            <div class="stats">
+              <div id="total-cases">Cases: <span id="cases-value"></span></div>
+              <div id="tests">Tests: <span id="tests-value"></span></div>
             </div>
+          </div>
 
-            <div class="block3">
-                <h2>The Ugly</h2>
-                <div class="stats">
-                    <div id="total-hospitalizations">Hospitalizations: <span id="hospitalizations-value"></span></div>
-                    <div id="deaths">Deaths: <span id="deaths-value"></span></div>
-                </div>
+          <div class="block3">
+            <h2>The Ugly</h2>
+            <div class="stats">
+              <div id="total-hospitalizations">
+                Hospitalizations: <span id="hospitalizations-value"></span>
+              </div>
+              <div id="deaths">Deaths: <span id="deaths-value"></span></div>
             </div>
+          </div>
         </div>
         <img src="canada-map-removebg-preview.png" alt="Map of Canada" class="map" />
-    </main>
- 
-    <footer>
+      </main>
+
+      <footer>
         <p>Covid-19 Tracker Canada © 2024</p>
-    </footer>
-  </div>
+      </footer>
+    </div>
     <script src="group_proj.js"></script>
-</body>
+  </body>
 </html>
