@@ -42,6 +42,9 @@ function applyTheme() {
     if (button) {
       button.style.backgroundColor = theme.buttonBackgroundColor;
     }
+    document.querySelectorAll(".block1, .block2, .block3").forEach((block) => {
+      block.style.backgroundColor = theme.backgroundColor;
+    })
   }
 }
 
@@ -159,7 +162,7 @@ function loadHomePageStats() {
     .then((data) => {
       console.log("Data fetched successfully for home page stats:", data);
       const stats = data.data[0];
-      document.getElementById("admitted-value").innerText = stats.total_vaccinations;
+      document.getElementById("administered-value").innerText = stats.total_vaccinations;
       document.getElementById("recoveries-value").innerText = stats.total_recoveries;
       document.getElementById("cases-value").innerText = stats.total_cases;
       document.getElementById("tests-value").innerText = stats.total_tests;
