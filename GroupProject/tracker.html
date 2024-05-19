@@ -11,8 +11,7 @@
 <body>
     <div class="transition-screen">
     <header>
-        <div class="title-container">
-        <h1>Covid-19 Tracker for Canada</h1><img src="images/time-tracker-grayscale.png" alt="Map of Canada" id="icon" /></div>
+        <h1>Covid-19 Tracker for Canada</h1>
         <nav>
             <ul>
                 <li><a href="home.html">Home</a></li>
@@ -22,6 +21,7 @@
         </nav>
     </header>
     <main>
+        <p>This is the tracker page for the Covid-19 Tracker. Stay informed about the latest Covid-19 statistics across Canada.</p>
         <button onclick="toggleTheme()">Toggle Dark/Light Theme</button>
 
         <div id="covid-stats">
@@ -34,17 +34,28 @@
             <p>Total Criticals: <span id="total-criticals"></span></p>
             <p>Total Recoveries: <span id="total-recoveries"></span></p>
             <p>Total Vaccinations: <span id="total-vaccinations"></span></p>
+        
+            <div id="province-stats">
+                <h3>Province/Territory Statistics</h3>
+                <p>Latest Date: <span id="province-latest-date"></span></p>
+                <p>Total Cases: <span id="province-total-cases"></span></p>
+                <p>Total Fatalities: <span id="province-total-fatalities"></span></p>
+                <p>Total Tests: <span id="province-total-tests"></span></p>
+                <p>Total Hospitalizations: <span id="province-total-hospitalizations"></span></p>
+                <p>Total Criticals: <span id="province-total-criticals"></span></p>
+                <p>Total Recoveries: <span id="province-total-recoveries"></span></p>
+                <p>Total Vaccinations: <span id="province-total-vaccinations"></span></p>
+            </div>
         </div>
-
+        
         <div id="map" style="height: 500px; margin-top: 20px;"></div>
     </main>
     <footer>
         <p>Covid-19 Tracker Canada © 2024</p>
     </footer>
     </div>
-    <!-- Add Leaflet JavaScript -->
+
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <!-- Include your JavaScript file -->
     <script src="group_proj.js"></script>
 </body>
 </html>

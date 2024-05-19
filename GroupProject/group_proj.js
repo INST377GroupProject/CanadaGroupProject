@@ -42,52 +42,108 @@ function applyTheme() {
     if (button) {
       button.style.backgroundColor = theme.buttonBackgroundColor;
     }
-    document.querySelectorAll(".block1, .block2, .block3").forEach((block) => {
-      block.style.backgroundColor = theme.backgroundColor;
-    })
   }
 }
 
-function fetchCovidData() {
-  console.log("Fetching COVID data...");
-  fetch("https://api.covid19tracker.ca/summary")
+// Function to fetch data for a specific province or territory
+function fetchDataForProvince(province) {
+  console.log(`Fetching data for ${province}...`);
+  fetch(`https://api.covid19tracker.ca/summary`)
     .then((response) => {
-      console.log("Response received");
+      console.log("Response received for province data");
       if (!response.ok) {
         throw new Error("Network response was not ok " + response.statusText);
       }
       return response.json();
     })
     .then((data) => {
-      console.log("Data fetched successfully:", data);
-      const stats = data.data[0];
-
-      document.getElementById("latest-date").innerText = stats.latest_date;
-      document.getElementById("total-cases").innerText = stats.total_cases;
-      document.getElementById("total-fatalities").innerText = stats.total_fatalities;
-      document.getElementById("total-tests").innerText = stats.total_tests;
-      document.getElementById("total-hospitalizations").innerText = stats.total_hospitalizations;
-      document.getElementById("total-criticals").innerText = stats.total_criticals;
-      document.getElementById("total-recoveries").innerText = stats.total_recoveries;
-      document.getElementById("total-vaccinations").innerText = stats.total_vaccinations;
-
-      // Assuming the data contains regional breakdowns
-      data.data.forEach((region) => {
-        const { region_name, lat, long, total_cases } = region;
-        L.circle([lat, long], {
-          color: "red",
-          fillColor: "#f03",
-          fillOpacity: 0.5,
-          radius: total_cases * 10, // Scale the radius by the number of cases
-        })
-          .addTo(map)
-          .bindPopup(`<b>${region_name}</b><br>Total cases: ${total_cases}`);
-      });
+      console.log("Data fetched successfully for province data:", data);
+      const provinceData = data.data.find((region) => region.province === province);
+      if (provinceData) {
+        document.getElementById("province-latest-date").innerText = provinceData.date;
+        document.getElementById("province-total-cases").innerText = provinceData.total_cases;
+        document.getElementById("province-total-fatalities").innerText = provinceData.total_fatalities;
+        document.getElementById("province-total-tests").innerText = provinceData.total_tests;
+        document.getElementById("province-total-hospitalizations").innerText = provinceData.total_hospitalizations;
+        document.getElementById("province-total-criticals").innerText = provinceData.total_criticals;
+        document.getElementById("province-total-recoveries").innerText = provinceData.total_recoveries;
+        document.getElementById("province-total-vaccinations").innerText = provinceData.total_vaccinations;
+      } else {
+        console.error(`No data found for ${province}`);
+      }
     })
     .catch((error) => {
-      console.error("Error fetching data:", error);
+      console.error(`Error fetching data for ${province}:`, error);
     });
 }
+
+// Ensure the theme is applied on page load
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("Document loaded");
+
+  // Call the function to load home page stats and fetch province data
+  fetchCovidData();
+
+  // If there's a theme set in local storage, apply it
+  if (localStorage.getItem("theme")) {
+    applyTheme();
+  }
+});
+
+// Fetch and display COVID-19 data
+function fetchCovidData() {
+  console.log("Fetching COVID data...");
+  fetch("https://api.covid19tracker.ca/summary")
+      .then((response) => {
+          console.log("Response received");
+          if (!response.ok) {
+              throw new Error("Network response was not ok " + response.statusText);
+          }
+          return response.json();
+      })
+      .then((data) => {
+          console.log("Data fetched successfully:", data);
+          const stats = data.data[0];
+
+          document.getElementById("latest-date").innerText = stats.latest_date;
+          document.getElementById("total-cases").innerText = stats.total_cases;
+          document.getElementById("total-fatalities").innerText = stats.total_fatalities;
+          document.getElementById("total-tests").innerText = stats.total_tests;
+          document.getElementById("total-hospitalizations").innerText = stats.total_hospitalizations;
+          document.getElementById("total-criticals").innerText = stats.total_criticals;
+          document.getElementById("total-recoveries").innerText = stats.total_recoveries;
+          document.getElementById("total-vaccinations").innerText = stats.total_vaccinations;
+
+          // Assuming the data contains regional breakdowns
+          data.data.forEach((region) => {
+              const { region_name, lat, long, total_cases } = region;
+              L.circle([lat, long], {
+                  color: "red",
+                  fillColor: "#f03",
+                  fillOpacity: 0.5,
+                  radius: total_cases * 10, // Scale the radius by the number of cases
+              })
+              .addTo(map)
+              .bindPopup(`<b>${region_name}</b><br>Total cases: ${total_cases}`);
+          });
+      })
+      .catch((error) => {
+          console.error("Error fetching data:", error);
+      });
+}
+
+// Ensure the theme is applied on page load
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("Document loaded");
+
+  // Call the function to load home page stats and fetch province data
+  fetchCovidData();
+
+  // If there's a theme set in local storage, apply it
+  if (localStorage.getItem("theme")) {
+      applyTheme();
+  }
+});
 
 // Update home page "Good", "Bad", and "Ugly" numbers
 function loadHomePageStats() {
@@ -103,7 +159,7 @@ function loadHomePageStats() {
     .then((data) => {
       console.log("Data fetched successfully for home page stats:", data);
       const stats = data.data[0];
-      document.getElementById("administered-value").innerText = stats.total_vaccinations;
+      document.getElementById("admitted-value").innerText = stats.total_vaccinations;
       document.getElementById("recoveries-value").innerText = stats.total_recoveries;
       document.getElementById("cases-value").innerText = stats.total_cases;
       document.getElementById("tests-value").innerText = stats.total_tests;
@@ -124,64 +180,52 @@ document.addEventListener("DOMContentLoaded", () => {
   // Transition on homepage
   const transitionScreen = document.querySelector(".transition-screen");
   setTimeout(() => {
-    transitionScreen.classList.add("show");
+   transitionScreen.classList.add("show");
   }, 100); // Delay to ensure the CSS transition applies
 });
 
-// Ensure the theme is applied on page load
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("Document loaded");
+// Initialize the map
+const map = L.map("map").setView([51.0447, -114.0719], 4); // Set initial view to Canada
 
-  // Initialize the map
-  const map = L.map("map").setView([51.0447, -114.0719], 4); // Set initial view to Canada
+// Add tile layer from OpenStreetMap or any other provider
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  attribution:
+    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+}).addTo(map);
 
-  // Add tile layer from OpenStreetMap or any other provider
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution:
-      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-  }).addTo(map);
+// Fetch and display COVID-19 data
+fetchCovidData();
+loadHomePageStats();
 
-  // Fetch and display COVID-19 data
-  fetchCovidData();
-  loadHomePageStats();
+// If there's a theme set in local storage, apply it
+if (localStorage.getItem("theme")) {
+  applyTheme();
+}
 
-  // If there's a theme set in local storage, apply it
-  if (localStorage.getItem("theme")) {
-    applyTheme();
-  }
+// Define the clickable regions on the map corresponding to each province or territory
+const clickableRegions = {
+  Alberta: [51.0447, -114.0719],
+  "British Columbia": [53.7267, -127.6476],
+  Manitoba: [49.8951, -97.1384],
+  "New Brunswick": [46.5653, -66.4619],
+  "Newfoundland and Labrador": [53.1355, -57.6604],
+  "Northwest Territories": [64.8255, -124.8457],
+  "Nova Scotia": [44.6819, -63.7443],
+  Nunavut: [70.2998, -83.1076],
+  Ontario: [51.2538, -85.3232],
+  "Prince Edward Island": [46.5107, -63.4168],
+  Quebec: [52.9399, -73.5491],
+  Saskatchewan: [52.9399, -106.4509],
+  Yukon: [64.2823, -135.0],
+};
 
-  // Define the clickable regions on the map corresponding to each province or territory
-  const clickableRegions = {
-    Alberta: [51.0447, -114.0719],
-    "British Columbia": [53.7267, -127.6476],
-    Manitoba: [49.8951, -97.1384],
-    "New Brunswick": [46.5653, -66.4619],
-    "Newfoundland and Labrador": [53.1355, -57.6604],
-    "Northwest Territories": [64.8255, -124.8457],
-    "Nova Scotia": [44.6819, -63.7443],
-    Nunavut: [70.2998, -83.1076],
-    Ontario: [51.2538, -85.3232],
-    "Prince Edward Island": [46.5107, -63.4168],
-    Quebec: [52.9399, -73.5491],
-    Saskatchewan: [52.9399, -106.4509],
-    Yukon: [64.2823, -135.0],
-  };
+// Add event listeners to each region
+Object.keys(clickableRegions).forEach((region) => {
+  const coordinates = clickableRegions[region];
+  const marker = L.marker(coordinates).addTo(map);
 
-  // Add event listeners to each region
-  Object.keys(clickableRegions).forEach((region) => {
-    const coordinates = clickableRegions[region];
-    const marker = L.marker(coordinates).addTo(map);
-
-    marker.on("click", () => {
-      // When a region is clicked, retrieve the data for that specific province or territory and display it
-      fetchDataForRegion(region);
-    });
+  marker.on("click", () => {
+    // When a region is clicked, retrieve the data for that specific province or territory and display it
+    fetchDataForRegion(region);
   });
-
-  // Function to fetch data for a specific province or territory
-  function fetchDataForRegion(region) {
-    // Fetch data for the selected region and update the statistics
-    // For example, you can make an API request to retrieve the data based on the selected region
-    // Update the HTML elements with the fetched data
-  }
 });
