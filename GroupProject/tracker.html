@@ -1,11 +1,16 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Tracker Functionality</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covid-19 Tracker Canada</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Add Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 <body>
     <header>
-        <h1>Covid-19 Case Tracker</h1>
+        <h1>Covid-19 Tracker for Canada</h1>
         <nav>
             <ul>
                 <li><a href="home.html">Home</a></li>
@@ -15,7 +20,9 @@
         </nav>
     </header>
     <main>
-        <p>Here we can track the latest statistics for Covid-19 cases across Canada.</p>
+        <p>This is the tracker page for the Covid-19 Tracker. Stay informed about the latest Covid-19 statistics across Canada.</p>
+        <button onclick="toggleTheme()">Toggle Dark/Light Theme</button>
+
         <div id="covid-stats">
             <h2>Covid-19 Statistics in Canada</h2>
             <p>Latest Date: <span id="latest-date"></span></p>
@@ -27,10 +34,15 @@
             <p>Total Recoveries: <span id="total-recoveries"></span></p>
             <p>Total Vaccinations: <span id="total-vaccinations"></span></p>
         </div>
+
+        <div id="map" style="height: 500px; margin-top: 20px;"></div>
     </main>
     <footer>
         <p>Covid-19 Tracker Canada © 2024</p>
     </footer>
+    <!-- Add Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!-- Include your JavaScript file -->
     <script src="group_proj.js"></script>
 </body>
 </html>
