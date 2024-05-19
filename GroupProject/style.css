@@ -16,6 +16,7 @@ header {
 
 p {
     text-align: center;
+    line-height: 1.5;
 }
 
 nav ul {
@@ -62,6 +63,8 @@ button {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    display: block;
+    margin: 0 auto;
 }
 
 button:hover {
@@ -75,17 +78,6 @@ button:hover {
 h1.title {
     font-size: 36px;
     margin-bottom: 30px;
-}
-
-.block1, .block2, .block3 {
-    display: inline-flex;
-    width: 50%;
-    margin: 20px;
-    padding: 20px;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    justify-content: center;
-    position: relative;
 }
 
 .block1 {
@@ -128,15 +120,18 @@ h1.title {
 }
 
 .map {
-    height: 85%;
-    width: 85%;
+    height: auto;
+    width: 50%;
+}
+
+.map-container {
+    display: flex;
+    justify-content: center;
     margin-bottom: 80px;
-    filter: contrast(65%);
-    filter: brightness(95%);
 }
 
 #covid-stats {
-    text-align: left;
+    text-align: center;
     margin-left: 20px; /* Add some left margin for spacing */
 }
 
@@ -175,3 +170,31 @@ h1.title {
 .transition-screen.show {
     opacity: 1;
 }
+
+.title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-container h1 {
+    margin: 0;
+    margin-right: 10px;
+}
+
+
+#icon {
+    width: 60px;
+    height: auto;
+}
+
+#syringe {
+    width: 60px;
+    height: auto;
+}
+
+#flag {
+    display: flex;
+    width: 60px;
+}
+
