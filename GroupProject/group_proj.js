@@ -96,6 +96,22 @@ function loadHomePageStats() {
     });
 }
 
+/* Map interactivity */
+const regions = document.querySelectorAll('map area');
+regions.forEach(region => {
+  region.addEventListener('mouseover', mouseOverEffect);
+  region.addEventListener('mouseout', resetEffect);
+});
+
+function mouseOverEffect() {
+  this.classList.add('area-highlight', 'area-shadow');
+}
+
+function resetEffect() {
+  this.classList.remove('area-highlight', 'area-shadow');  
+}
+
+
 // Ensure the theme is applied on page load
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Document loaded");
@@ -103,6 +119,19 @@ document.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("theme")) {
     applyTheme();
   }
+  // only run if on tracker page -- removes error from console on home page
+  if (window.location.pathname.includes("tracker.html")){ 
   fetchCovidData();
+}
   loadHomePageStats();
+});
+
+
+
+
+
+document.addEventListener('mousemove', function(event) {
+  const mouseX = event.clientX;
+  const mouseY = event.clientY;
+  console.log('Mouse X:', mouseX, 'Mouse Y:', mouseY);
 });
