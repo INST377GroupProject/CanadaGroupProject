@@ -52,14 +52,12 @@ main {
 
 button {
     background-color: #616161; /* Dark grey button */
-    color: palevioletred;
-    font-size: larger;
+    color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-bottom: 80px;
 }
 
 button:hover {
@@ -86,23 +84,43 @@ h1.title {
     position: relative;
 }
 
-main {
-    text-align: center;
-}
-
 .block1 {
     color: green;
     border: solid green;
+    display: inline-flex;
+    width: 50%;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: hsl(0, 0%, 19%); /* Change background color to gray */
+    justify-content: center;
+    position: relative;
 }
 
 .block2 {
     color: orangered;
     border: solid orangered;
+    display: inline-flex;
+    width: 50%;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: hsl(0, 0%, 19%); /* Change background color to gray */
+    justify-content: center;
+    position: relative;
 }
 
 .block3 {
     color: red;
     border: solid red;
+    display: inline-flex;
+    width: 50%;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: hsl(0, 0%, 19%); /* Change background color to gray */
+    justify-content: center;
+    position: relative;
 }
 
 .map {
@@ -114,11 +132,8 @@ main {
 }
 
 #covid-stats {
-    margin-top: 20px;
-    background-color: #1f1f1f;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    text-align: left;
+    margin-left: 20px; /* Add some left margin for spacing */
 }
 
 #covid-stats h2 {
