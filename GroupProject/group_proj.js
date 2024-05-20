@@ -86,6 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Call the function to load home page stats and fetch province data
   fetchCovidData();
+  loadHomePageStats();
 
   // If there's a theme set in local storage, apply it
   if (localStorage.getItem("theme")) {
@@ -93,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Fetch and display COVID-19 data
+// Fetch and display COVID-19 data and store in Supabase
 function fetchCovidData() {
   console.log("Fetching COVID data...");
   fetch("https://api.covid19tracker.ca/summary")
@@ -129,11 +130,18 @@ function fetchCovidData() {
               .addTo(map)
               .bindPopup(`<b>${region_name}</b><br>Total cases: ${total_cases}`);
           });
+
+          // Insert data into Supabase
+          return supabase.from('covid_data').insert([stats]);
+      })
+      .then((response) => {
+          console.log('Data inserted successfully:', response);
       })
       .catch((error) => {
           console.error("Error fetching data:", error);
       });
 }
+
 
 // Ensure the theme is applied on page load
 document.addEventListener("DOMContentLoaded", () => {
@@ -232,3 +240,27 @@ Object.keys(clickableRegions).forEach((region) => {
     fetchDataForRegion(region);
   });
 });
+
+const supabaseUrl = 'https://uehsglhvwupcczhhuuxh.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVlaHNnbGh2d3VwY2N6aGh1dXhoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYxNjQxNDEsImV4cCI6MjAzMTc0MDE0MX0.du1d-NNG59q9KbJFi4E-2dDYfnJpDxBWAjEsVkHYsE8';
+const supabase = createClient(supabaseUrl, supabaseKey);
+
+// Listen for connection state changes
+supabase.auth.onAuthStateChange((event, session) => {
+  console.log('Auth event:', event);
+  console.log('Auth session:', session);
+});
+
+supabase.onOpen(() => {
+  console.log('Connection to Supabase established.');
+});
+
+supabase.onClose(() => {
+  console.log('Connection to Supabase closed.');
+});
+
+supabase.onFailure((error) => {
+  console.error('Connection to Supabase failed:', error.message);
+});
+
+
