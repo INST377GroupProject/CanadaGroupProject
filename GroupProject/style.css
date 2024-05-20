@@ -5,7 +5,6 @@ body {
     margin: 0;
     padding: 0;
 }
-
 header {
     background-color: #1f1f1f; /* Slightly lighter dark shade for the header */
     color: #ffffff;
@@ -13,33 +12,27 @@ header {
     text-align: center;
     box-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
-
 p {
     text-align: center;
     line-height: 1.5;
 }
-
 nav ul {
     list-style-type: none;
     padding: 0;
 }
-
 nav ul li {
     display: inline;
     margin-right: 20px;
 }
-
 nav ul li a {
     color: #9fa8da; /* Soft blue for links */
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease; /* Smooth transition for color change */
 }
-
 nav ul li a:hover, nav ul li a:focus {
     color: #d1c4e9; /* Lighter purple shade on hover */
 }
-
 footer {
     background-color: #1f1f1f;
     color: white;
@@ -49,12 +42,32 @@ footer {
     position: fixed;
     bottom: 0;
 }
-
 main {
-    padding: 20px;
+    padding: 40px; /* Increase padding for better spacing */
     min-height: calc(100vh - 160px); /* Adjusting height to ensure footer sticks at bottom */
+    margin: 0 auto; /* Center the main content */
+    max-width: 1000px; /* Constrain the width for better readability */
 }
-
+section {
+    margin-bottom: 40px; /* Add some space between sections */
+    padding: 0 20px; /* Add padding to sections for better spacing */
+}
+h2 {
+    color: #bb86fc; /* Accent color for headings */
+    margin-bottom: 10px;
+}
+ul {
+    padding-left: 20px; /* Add some padding to the left for list items */
+}
+a {
+    color: #9fa8da; /* Color for links */
+}
+a:hover {
+    color: #d1c4e9; /* Color for links on hover */
+}
+p, li {
+    margin-bottom: 10px; /* Add some space between paragraphs and list items */
+}
 button {
     background-color: #616161; /* Dark grey button */
     color: white;
@@ -66,20 +79,16 @@ button {
     display: block;
     margin: 0 auto;
 }
-
 button:hover {
     background-color: #757575; /* Lighter grey on hover */
 }
-
 .container {
     text-align: center;
 }
-
 h1.title {
     font-size: 36px;
     margin-bottom: 30px;
 }
-
 .block1 {
     color: green;
     border: solid green;
@@ -92,7 +101,6 @@ h1.title {
     justify-content: center;
     position: relative;
 }
-
 .block2 {
     color: orangered;
     border: solid orangered;
@@ -105,7 +113,6 @@ h1.title {
     justify-content: center;
     position: relative;
 }
-
 .block3 {
     color: red;
     border: solid red;
@@ -118,40 +125,33 @@ h1.title {
     justify-content: center;
     position: relative;
 }
-
 .map {
     height: auto;
     width: 50%;
 }
-
 .map-container {
     display: flex;
     justify-content: center;
     margin-bottom: 80px;
 }
-
 #covid-stats {
     text-align: center;
     margin-left: 20px; /* Add some left margin for spacing */
 }
-
 #covid-stats h2 {
     color: #9fa8da; /* Soft blue for headings */
     font-size: 28px;
     margin-bottom: 15px;
 }
-
 #covid-stats p {
     color: #e0e0e0; /* Light grey for text */
     margin: 5px 0;
     font-size: 18px;
 }
-
 #covid-stats p span {
     font-weight: bold;
     color: #bb86fc; /* Accent color for values */
 }
-
 .stats {
     position: absolute;
     bottom: 10px;
@@ -160,41 +160,56 @@ h1.title {
     justify-content: space-around;
     padding: 0 10px; /* Adjust padding as needed */
 }
-
 /* Screen load transition */
 .transition-screen {
     opacity: 0;
     transition: opacity 1s ease-in-out;
 }
-
 .transition-screen.show {
     opacity: 1;
 }
-
 .title-container {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 .title-container h1 {
     margin: 0;
     margin-right: 10px;
 }
-
-
 #icon {
     width: 60px;
     height: auto;
 }
-
 #syringe {
     width: 60px;
     height: auto;
 }
-
 #flag {
     display: flex;
     width: 60px;
+    height: auto;
 }
-
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    header {
+        text-align: left;
+    }
+    
+    .title-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .title-container h1, #syringe {
+        margin-bottom: 10px;
+        margin-right: 0;
+    }
+    nav ul {
+        text-align: left;
+    }
+    nav ul li {
+        display: block;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
